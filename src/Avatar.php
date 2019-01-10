@@ -40,6 +40,7 @@ class Avatar {
         $pos = imagettfbbox($this->config['size'], 0, $this->config['font_file'], mb_substr($name, 0, 1));
         $font_width = $pos[2] - $pos[0] + 0.32 * $this->config['size'];
         $font_height = $pos[1] - $pos[5] + -0.16 * $this->config['size'];
+
         // 写入文字
         imagettftext($img_res, $this->config['size'], 0, ($this->config['width'] - $font_width) / 2, ($this->config['height'] - $font_height) / 2 + $font_height, $font_color, $this->config['font_file'], mb_substr($name, 0, 1));
 
@@ -63,6 +64,7 @@ class Avatar {
         } else {
             $generateMethodName($img_res, $path);
         }
+        // 释放图片内存
         imagedestroy($img_res);
     }
 
